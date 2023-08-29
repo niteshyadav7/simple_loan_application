@@ -6,6 +6,7 @@ import cors from "cors";
 
 /******************LOCAL IMPORTS******************/
 import Connection from "./config/db.js";
+import mainRouter from "./routes/index.js";
 
 dotenv.config();
 const { PORT, HOST_NAME, MONGO_DB } = process.env;
@@ -18,6 +19,8 @@ app.use(cors());
 
 /**************DATABASE CONNECTION**************/
 Connection(MONGO_DB);
+
+app.use("/api", mainRouter);
 
 /******************server code*******************/
 app.listen(PORT || 8080, () => {

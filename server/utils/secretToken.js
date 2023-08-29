@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
-import dotenv from "d"
+import dotenv from "dotenv";
+dotenv.config();
 
-const secret_key = "mera naam hai jaggu karta hu sabko haggu. ";
+const secret_key = `${process.env.SECRET_KEY}`;
 
 export const createSecretToken = (id) => {
   return jwt.sign({ id }, secret_key, { expiresIn: 3 * 24 * 60 * 60 });
